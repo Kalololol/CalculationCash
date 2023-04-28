@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculationCash.Domain", "CalculationCash.Domain\CalculationCash.Domain.csproj", "{92F396E6-18E3-4643-A5BA-4A4AF80FED42}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{92F396E6-18E3-4643-A5BA-4A4AF80FED42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92F396E6-18E3-4643-A5BA-4A4AF80FED42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92F396E6-18E3-4643-A5BA-4A4AF80FED42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92F396E6-18E3-4643-A5BA-4A4AF80FED42}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3212EEB-F484-456A-8032-367907B79408}
+	EndGlobalSection
+EndGlobal
