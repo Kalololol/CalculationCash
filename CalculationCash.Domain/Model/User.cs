@@ -8,12 +8,15 @@ namespace CalculationCash.Domain.Model
 {
     public class User : Entity
     {
+        public bool Deleted { get; set; }
+        public DateTime CreateDate { get; set; }
         public DateTime LastModified { get; set; }
         public string FirstName { get; set; }
         public string Surname { get; set; }
         public string AddressEmail { get; set; }
         public string Phone { get; set; }
         public string Password { get; set; }
+
         
     }
 }

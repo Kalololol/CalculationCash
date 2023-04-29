@@ -8,9 +8,10 @@ namespace CalculationCash.Domain
 {
     public class Entity
     {
+        public bool Deleted;
+
         public Guid Guid { get; set; }
-        public bool Deleted { get; set; }
-        public DateTime CreateDate { get; set; }
+
 
     }
 }

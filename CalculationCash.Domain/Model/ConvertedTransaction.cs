@@ -8,6 +8,8 @@ namespace CalculationCash.Domain.Model
 {
     public class ConvertedTransaction : Entity
     {
+        public bool Deleted { get; set; }
+        public DateTime CreateDate { get; set; }
         public DateTime TimeTransaction { get; set; }
         public string OrderNumber { get; set; }
         public decimal Provision { get; set; }
@@ -21,7 +23,9 @@ namespace CalculationCash.Domain.Model
         public decimal ResultSum { get; set; }
         public decimal ResultSumByPLN { get; set; }
         public decimal ConverterByPLN { get; set; }
-        public Guid GuidTransaction { get; set; }
+        public Transaction GuidTransaction { get; set; }
+        public ReportAfterConversion GuidReportAfterConversion { get; set; }
+        public User GuidUser { get; set; }
 
     }
 }
