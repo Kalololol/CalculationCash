@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace CalculationCash.Domain.Model
 {
-    public class ConvertedTransaction
+    public class ConvertedTransaction : Entity
     {
-        public bool Deleted { get; set; }
-        public DateTime CreateDate { get; set; }
         public DateTime TimeTransaction { get; set; }
         public string OrderNumber { get; set; }
         public decimal Provision { get; set; }
