@@ -12,7 +12,8 @@ namespace CalculationCash.Domain.Model
         public DateTime CreateDate { get; set; }
         public string ReportName { get; set; }
         public ReportBeforeConversion GuidReportBeforeConversion { get; set; }
-        public IEnumerable<ConvertedTransaction> GuidConvertedTransactions { get; set; }
+        public ICollection<ConvertedTransaction> GuidConvertedTransactions { get; set; }
+        public User GuidUser { get; set; }
         
     }
 }

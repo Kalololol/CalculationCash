@@ -15,8 +15,11 @@ namespace CalculationCash.Domain.Model
         public string Surname { get; set; }
         public string AddressEmail { get; set; }
         public string Phone { get; set; }
-        public string Password { get; set; }
+        public string? Password { get; set; }
+        public ICollection<Transaction>? Transactions { get; set; }
+        public ReportBeforeConversion? ReportBeforeConversion { get; set; }
+        public ReportAfterConversion? ReportAfterConversion { get; set;}
 
-        
+
     }
 }

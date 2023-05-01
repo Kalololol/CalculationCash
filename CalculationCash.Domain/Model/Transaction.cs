@@ -23,8 +23,8 @@ namespace CalculationCash.Domain.Model
         public decimal Swap { get; set; }
         public decimal Profit { get; set; }
         public decimal ResultSum { get; set; }
-        public ConvertedTransaction GuidConvertedTransaction { get; set; }
+        public string GuidConvertedTransaction { get; set; }
         public ReportBeforeConversion GuidReportBeforeConversion { get; set; }
-        public User GuidUser { get; set; }
+        public string GuidUser { get; set; }
     }
 }

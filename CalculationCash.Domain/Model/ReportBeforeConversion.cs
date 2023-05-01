@@ -11,7 +11,8 @@ namespace CalculationCash.Domain.Model
         public bool Deleted { get; set; }
         public DateTime CreateDate { get; set; }
         public string ReportName { get; set; }
-        public ReportAfterConversion GuidReportBeforeConversion { get; set; }
-        public IEnumerable<Transaction> GuidTransaction { get; set; }
+        public ReportAfterConversion? GuidReportBeforeConversion { get; set; }
+        public ICollection<Transaction> GuidTransaction { get; set; }
+        public User GuidUser { get; set; }
     }
 }

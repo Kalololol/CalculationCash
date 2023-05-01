@@ -11,12 +11,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+
 
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
         option.UseSqlServer(builder.Configuration.GetConnectionString("CalculationCashConnectionStrings"))
     );
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+
+var app = builder.Build();
 
 
 // Configure the HTTP request pipeline.
@@ -31,5 +34,10 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 app.Run();
