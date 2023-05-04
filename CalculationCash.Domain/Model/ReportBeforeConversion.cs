@@ -8,11 +8,11 @@ namespace CalculationCash.Domain.Model
 {
     public class ReportBeforeConversion : Entity
     {
-        public bool Deleted { get; set; }
-        public DateTime CreateDate { get; set; }
         public string ReportName { get; set; }
-        public ReportAfterConversion? GuidReportBeforeConversion { get; set; }
+        //public string? GuidReportBeforeConversion { get; set; }
+        public virtual ReportAfterConversion ReportAfterConversion { get; set; }
         public ICollection<Transaction> GuidTransaction { get; set; }
-        public User GuidUser { get; set; }
+        //public string GuidUser { get; set; }
+        public virtual User User { get; set; }
     }
 }

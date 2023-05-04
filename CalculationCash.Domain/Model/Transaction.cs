@@ -8,8 +8,6 @@ namespace CalculationCash.Domain.Model
 {
     public class Transaction : Entity
     {
-        public bool Deleted { get; set; }
-        public DateTime CreateDate { get; set; }
         public DateTime TimeTransaction { get; set; }
         public string Contract { get; set; }
         public string Instrument { get; set; }
@@ -23,8 +21,12 @@ namespace CalculationCash.Domain.Model
         public decimal Swap { get; set; }
         public decimal Profit { get; set; }
         public decimal ResultSum { get; set; }
-        public string GuidConvertedTransaction { get; set; }
-        public ReportBeforeConversion GuidReportBeforeConversion { get; set; }
+        public string? GuidConvertedTransaction { get; set; }
+        
+        public virtual ConvertedTransaction? ConvertedTransaction { get; set; } 
+        public string GuidReportBeforeConversion { get; set; }
+        public virtual ReportBeforeConversion ReportBeforeConversion { get; set; }
         public string GuidUser { get; set; }
+        public virtual User User { get; set; }
     }
 }
