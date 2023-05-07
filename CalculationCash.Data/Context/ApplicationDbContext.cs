@@ -1,11 +1,5 @@
 ﻿using CalculationCash.Domain.Model;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace CalculationCash.Data
 {
@@ -24,30 +18,43 @@ namespace CalculationCash.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            /*modelBuilder.Entity<ConvertedTransaction>()
-                .Property(t => t.Guid).IsRequired();
-
-            modelBuilder.Entity<Transaction>()
-                .Property(t => t.Guid).IsRequired();
-
-            modelBuilder.Entity<ReportAfterConversion>()
-                .Property(t => t.Guid).IsRequired();
-
-            modelBuilder.Entity<ReportBeforeConversion>()
-                .Property(t => t.Guid).IsRequired();
-
-            modelBuilder.Entity<User>()
-                .Property(t => t.Guid).IsRequired();*/
-
-            modelBuilder.Entity<ConvertedTransaction>()
-            .HasOne(c => c.Transaction)
-            .WithOne(t => t.ConvertedTransaction)
-            .HasForeignKey<ConvertedTransaction>(c => c.GuidTransaction);
-
-            modelBuilder.Entity<Transaction>()
-                .HasOne(u => u.ConvertedTransaction)
-                .WithOne(t => t.Transaction)
-                .HasForeignKey<Transaction>(u => u.GuidConvertedTransaction);
+            modelBuilder.Entity<User>(eb =>
+            {
+                eb.Property(x => x.Deleted).HasDefaultValue(0);
+                eb.Property(x => x.CreateDate).HasDefaultValueSql("getutcdate()");
+                eb.Property(x => x.UpdateDate).ValueGeneratedOnUpdate();
+                eb.HasMany(x => x.ReportBeforeConversion).WithOne(b => b.User).HasForeignKey(b => b.UserId).OnDelete(DeleteBehavior.NoAction);
+                eb.HasMany(x => x.ReportAfterConversion).WithOne(a => a.User).HasForeignKey(a => a.UserId).OnDelete(DeleteBehavior.NoAction);
+            });
+            modelBuilder.Entity<Transaction>(eb =>
+            {
+                eb.Property(x => x.Deleted).HasDefaultValue(0);
+                eb.Property(x => x.CreateDate).HasDefaultValueSql("getutcdate()");
+                eb.Property(x => x.UpdateDate).ValueGeneratedOnUpdate();
+            });
+            modelBuilder.Entity<ReportAfterConversion>(eb =>
+            {
+                eb.Property(x => x.Deleted).HasDefaultValue(0);
+                eb.Property(x => x.CreateDate).HasDefaultValueSql("getutcdate()");
+                eb.Property(x => x.UpdateDate).ValueGeneratedOnUpdate();
+                eb.HasMany(x => x.ConvertedTransactions).WithOne(t => t.ReportAfterConversion).HasForeignKey(t => t.ReportAfterConversionId).OnDelete(DeleteBehavior.NoAction);
+                eb.HasOne(x => x.ReportBeforeConversion).WithOne(a => a.ReportAfterConversion).HasForeignKey<ReportAfterConversion>(a => a.ReportBeforeConversionId).OnDelete(DeleteBehavior.NoAction);
+            });
+            modelBuilder.Entity<ReportBeforeConversion>(eb =>
+            {
+                eb.Property(x => x.Deleted).HasDefaultValue(0);
+                eb.Property(x => x.CreateDate).HasDefaultValueSql("getutcdate()");
+                eb.Property(x => x.UpdateDate).ValueGeneratedOnUpdate();
+                eb.HasMany(x => x.Transactions).WithOne(t => t.ReportBeforeConversion).HasForeignKey(t => t.ReportBeforeConversionId).OnDelete(DeleteBehavior.NoAction);
+                eb.HasOne(x => x.ReportAfterConversion).WithOne(b => b.ReportBeforeConversion).HasForeignKey<ReportBeforeConversion>(b => b.ReportAfterConversionId).OnDelete(DeleteBehavior.NoAction);
+             //   eb.HasOne(x => x.User).WithMany(u => u.ReportBeforeConversion).HasForeignKey(x => x.UserId).OnDelete(DeleteBehavior.NoAction);
+            });
+            modelBuilder.Entity<ConvertedTransaction>(eb =>
+            {
+                eb.Property(x => x.Deleted).HasDefaultValue(0);
+                eb.Property(x => x.CreateDate).HasDefaultValueSql("getutcdate()");
+                eb.Property(x => x.UpdateDate).ValueGeneratedOnUpdate();
+            });
 
         }
 

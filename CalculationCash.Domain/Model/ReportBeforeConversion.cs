@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 
 namespace CalculationCash.Domain.Model
 {
-    public class ReportBeforeConversion : Entity
+    public class ReportBeforeConversion 
     {
+        public bool Deleted;
+        public DateTime CreateDate { get; set; }
+        public DateTime UpdateDate { get; set; }
+        public Guid Id { get; set; }
         public string ReportName { get; set; }
-        //public string? GuidReportBeforeConversion { get; set; }
-        public virtual ReportAfterConversion ReportAfterConversion { get; set; }
-        public ICollection<Transaction> GuidTransaction { get; set; }
-        //public string GuidUser { get; set; }
-        public virtual User User { get; set; }
+        public ReportAfterConversion ReportAfterConversion { get; set; }
+        public Guid ReportAfterConversionId { get; set; }
+        public IList<Transaction> Transactions { get; set; } = new List<Transaction>();
+        public Guid UserId { get; set; }
+        public User User { get; set; }
     }
 }

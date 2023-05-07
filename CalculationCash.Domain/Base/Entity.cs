@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,10 +11,9 @@ namespace CalculationCash.Domain
     public class Entity
     {
         public bool Deleted;
-        [Required]
         public DateTime CreateDate { get; set; }
-        [Key]
-        public Guid Guid { get; set; }
+        public DateTime UpdateDate { get; set; }
+        public Guid Id { get; set; }
 
 
     }

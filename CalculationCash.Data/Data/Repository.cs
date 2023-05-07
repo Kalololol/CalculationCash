@@ -36,9 +36,9 @@ namespace CalculationCash.Data
         {
             return entities;
         }
-        public TEntity GetById(string guid)
+        public TEntity GetById(Guid id)
         {
-            return entities.SingleOrDefault(e => e.Guid.Equals(guid));
+            return entities.SingleOrDefault(e => e.Id.Equals(id));
         }
         public void Update(TEntity entity)
         {

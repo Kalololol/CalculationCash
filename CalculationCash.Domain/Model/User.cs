@@ -7,17 +7,21 @@ using System.Threading.Tasks;
 
 namespace CalculationCash.Domain.Model
 {
-    public class User : Entity
+    public class User 
     {
+        public bool Deleted;
+        public DateTime CreateDate { get; set; }
+        public DateTime UpdateDate { get; set; }
+        public Guid Id { get; set; }
         public DateTime LastModified { get; set; }
         public string FirstName { get; set; }
         public string Surname { get; set; }
         public string AddressEmail { get; set; }
         public string Phone { get; set; }
         public string Password { get; set; }
-        public ICollection<Transaction>? Transactions { get; set; }
-        public ICollection<ReportBeforeConversion>? ReportBeforeConversionGuid { get; set; }
-        public ICollection<ReportAfterConversion>? ReportAfterConversionGuid { get; set;}
+        public IList<ReportBeforeConversion> ReportBeforeConversion { get; set; } = new List<ReportBeforeConversion>();
+        public IList<ReportAfterConversion> ReportAfterConversion { get; set;} = new List<ReportAfterConversion>();
+        
 
 
     }

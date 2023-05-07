@@ -7,7 +7,7 @@ namespace CalculationCash.Data
     {
         void Add(TEntity entity);
         void Update(TEntity entity);
-        TEntity GetById(string guid);
+        TEntity GetById(Guid id);
         IQueryable<TEntity> GetAll();
         IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
         void Delete(TEntity entity);

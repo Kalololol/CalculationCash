@@ -5,9 +5,9 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculationCash.Domain", "CalculationCash.Domain\CalculationCash.Domain.csproj", "{92F396E6-18E3-4643-A5BA-4A4AF80FED42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculationCash.Data", "CalculationCash.Data\CalculationCash.Data.csproj", "{D59B2C3D-63F7-49FD-8B4B-DCD285B702E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculationCash.Data", "CalculationCash.Data\CalculationCash.Data.csproj", "{D59B2C3D-63F7-49FD-8B4B-DCD285B702E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculationCash.Application", "CalculationCash.Application\CalculationCash.Application.csproj", "{8222700F-6C18-4062-AFE3-B7BB6327AA80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculationCash.Application", "CalculationCash.Application\CalculationCash.Application.csproj", "{8222700F-6C18-4062-AFE3-B7BB6327AA80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
