@@ -7,7 +7,14 @@ namespace CalculationCash.Application.AutoMapper
     {
         public MappingProfile() 
         {
+            CreateMap<ConvertedTransaction, ConvertedTransactionDto>().ReverseMap();
             CreateMap<Currency, CurrencyDto>().ReverseMap();
+            CreateMap<ReportAfterConversion, ReportAfterConversionDto>().ReverseMap();
+            CreateMap<ReportBeforeConversion, ReportBeforeConversionDto>().ReverseMap();
+            CreateMap<Transaction, TransactionDto>().ReverseMap();
+            CreateMap<User, UserDto>().ReverseMap();
+            //CreateMap<>().ReverseMap();
+
 
 
         }
