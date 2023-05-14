@@ -8,6 +8,8 @@ namespace CalculationCash.Domain.Model
 {
     public class Currency
     {
+        public bool Deleted;
+        public DateTime CreateDate { get; set; }
         public Guid Id { get; set; }
         public string CurrencyName { get; set; }
         public string Code { get; set; }
