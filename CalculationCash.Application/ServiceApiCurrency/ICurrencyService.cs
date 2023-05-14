@@ -2,6 +2,8 @@
 {
     public interface ICurrencyService
     {
-        Task <CurrencyDto> GetCurrencyByDate(DateTime date);
+        Task <CurrencyDto> GetEURCurrencyByDate(DateTime date);
+        Task<CurrencyDto> GetUSDCurrencyByDate(DateTime date);
+
     }
 }
