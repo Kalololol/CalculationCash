@@ -1,3 +1,4 @@
+using CalculationCash.Application.AutoMapper;
 using CalculationCash.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,6 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddSingleton(AutoMapperConfiguration.Initialize());
 
 
 builder.Services.AddDbContext<ApplicationDbContext>(option =>

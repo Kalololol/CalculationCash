@@ -13,6 +13,7 @@ namespace CalculationCash.Data
         public DbSet<ReportAfterConversion> ReportAfterConversion { get; set; }
         public DbSet<ReportBeforeConversion> ReportBeforeConversion { get; set; }   
         public DbSet<User> Users { get; set; }
+        public DbSet<Currency> Currency { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
