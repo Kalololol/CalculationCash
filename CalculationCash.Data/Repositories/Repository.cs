@@ -9,6 +9,14 @@ using System.Threading.Tasks;
 
 namespace CalculationCash.Data
 {
+    public interface IRepository<TEntity>
+    {
+        Task<TEntity> GetById(Guid id);
+        Task<IEnumerable<TEntity>> GetAll();
+        Task Add(TEntity entity);
+        Task Update(TEntity entity);
+        Task Delete(Guid id);
+    }
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         private readonly DbContext _context;
