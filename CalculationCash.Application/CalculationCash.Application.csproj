@@ -24,10 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Service\Command\CourseDownloadCommand\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CalculationCash.Data\CalculationCash.Data.csproj" />
     <ProjectReference Include="..\CalculationCash.Domain\CalculationCash.Domain.csproj" />
   </ItemGroup>

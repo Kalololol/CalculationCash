@@ -26,6 +26,9 @@ namespace CalculationCash.Application.ServiceApiCurrency
                 dynamic obj = JsonConvert.DeserializeObject(responseBody);
                 CurrencyDto dto = new CurrencyDto()
                 {
+                    CreateDate = DateTime.Now,
+                    Deleted = false,
+                    Id = new Guid(),
                     CurrencyName = obj.currency,
                     Code = obj.code,
                     EffectiveDate = DateTime.Parse((obj.rates[0].effectiveDate).ToString()),

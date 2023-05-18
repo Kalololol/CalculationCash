@@ -9,5 +9,10 @@
         public string Code { get; set; }
         public decimal Mid { get; set; }
         public DateTime EffectiveDate { get; set; }
+
+        public CurrencyDto()
+        {
+            
+        }
     }
 }

@@ -12,6 +12,8 @@ namespace CalculationCash.Data
     public interface IRepository<TEntity>
     {
         Task<TEntity> GetById(Guid id);
+        Task<TEntity> GetByDate(DateTime date);
+
         Task<IEnumerable<TEntity>> GetAll();
         Task Add(TEntity entity);
         Task Update(TEntity entity);
@@ -31,6 +33,10 @@ namespace CalculationCash.Data
         public async Task<TEntity> GetById(Guid id)
         {
             return await _entities.FindAsync(id);
+        }
+        public async Task<TEntity> GetByDate(DateTime date)
+        {
+            return await _entities.FindAsync(date);
         }
 
         public async Task<IEnumerable<TEntity>> GetAll()

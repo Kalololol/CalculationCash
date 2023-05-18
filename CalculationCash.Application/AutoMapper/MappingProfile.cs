@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CalculationCash.Application.Service.Command;
 using CalculationCash.Domain.Model;
 
 namespace CalculationCash.Application.AutoMapper
@@ -13,9 +14,10 @@ namespace CalculationCash.Application.AutoMapper
             CreateMap<ReportBeforeConversion, ReportBeforeConversionDto>().ReverseMap();
             CreateMap<Transaction, TransactionDto>().ReverseMap();
             CreateMap<User, UserDto>().ReverseMap();
+            CreateMap<CurrencyDto, CreateEURCurrencyByDateCommand>().ReverseMap();
             //CreateMap<>().ReverseMap();
 
-
+            
 
         }
     }
