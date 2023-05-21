@@ -1,6 +1,5 @@
 using CalculationCash.Application.AutoMapper;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
+using CalculationCash.Blazor;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +9,7 @@ builder.Services.AddServerSideBlazor();
 
 builder.Services.AddSingleton(AutoMapperConfiguration.Initialize());
 
+builder.Services.AddSingleton(AutoMapperConfigurationBlazor.Initialize());
 
 
 var app = builder.Build();

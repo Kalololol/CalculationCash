@@ -1,6 +1,6 @@
-﻿namespace CalculationCash.Application
+﻿namespace CalculationCash.Blazor
 {
-    public class CurrencyDto
+    public class CurrencyBlazor
     {
         public bool Deleted;
         public DateTime CreateDate { get; set; }
@@ -9,9 +9,5 @@
         public string Code { get; set; }
         public decimal Mid { get; set; }
         public DateTime EffectiveDate { get; set; }
-
-        public CurrencyDto()
-        {
-        }
     }
 }

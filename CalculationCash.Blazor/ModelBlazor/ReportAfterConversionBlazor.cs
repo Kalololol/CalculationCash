@@ -1,8 +1,6 @@
-﻿using CalculationCash.Domain.Model;
-
-namespace CalculationCash.Application
+﻿namespace CalculationCash.Blazor
 {
-    public class ReportAfterConversionDto
+    public class ReportAfterConversionBlazor
     {
         public bool Deleted;
         public DateTime CreateDate { get; set; }
@@ -11,6 +9,5 @@ namespace CalculationCash.Application
         public string ReportName { get; set; }
         public Guid ReportBeforeConversionDtoId { get; set; }
         public Guid UserDtoId { get; set; }
-        
     }
 }

@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculationCash.Data", "Cal
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculationCash.Application", "CalculationCash.Application\CalculationCash.Application.csproj", "{8222700F-6C18-4062-AFE3-B7BB6327AA80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculationCash.Blazor", "CalculationCash.Blazor\CalculationCash.Blazor.csproj", "{DB714743-F22C-4086-A82D-313DCEB14656}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculationCash.Blazor", "CalculationCash.Blazor\CalculationCash.Blazor.csproj", "{DB714743-F22C-4086-A82D-313DCEB14656}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

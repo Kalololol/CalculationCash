@@ -1,0 +1,80 @@
+﻿
+
+<h3>Transakcje</h3>
+
+@if (transactions.Count > 0)
+{
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nazwa</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var wiersz in wiersze)
+            {
+                <tr>
+                    <td>@wiersz.Id</td>
+                    <td>@wiersz.Nazwa</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+else
+{
+    
+}
+
+<h4>New Transaction:</h4>
+<div>
+    <label for="date">Data transakcji:</label>
+    <input id="date" type="date" @bind="@newTransaction.Date" />
+</div>
+<div>
+    <label for="commission">Prowizja:</label>
+    <input id="commission" type="number" step="0.01" @bind="@newTransaction.Commission" />
+</div>
+<div>
+    <label for="fee">Komisja:</label>
+    <input id="fee" type="number" step="0.01" @bind="@newTransaction.Fee" />
+</div>
+<div>
+    <label for="swap">Swap:</label>
+    <input id="swap" type="number" step="0.01" @bind="@newTransaction.Swap" />
+</div>
+<div>
+    <label for="profit">Profit:</label>
+    <input id="profit" type="number" step="0.01" @bind="@newTransaction.Profit" />
+</div>
+
+<button @onclick="AddTransaction">Dodaj</button>
+<button @onclick="RemoveLastTransaction">Usuń</button>
+<button @onclick="ClearForm">Usuń wszystko</button>
+
+
+@code {
+    private List<TransactionBlazor> transactions = new List<TransactionBlazor>();
+    private TransactionBlazor newTransaction = new TransactionBlazor();
+
+    private void AddTransaction()
+    {
+        transactions.Add(newTransaction);
+        newTransaction = new TransactionBlazor();
+    }
+
+    private void RemoveLastTransaction()
+    {
+        if (transactions.Count > 0) transactions.RemoveAt(transactions.Count - 1);
+    }
+    private void ClearForm()
+    {
+        transactions.Clear();
+        newTransaction = new TransactionBlazor();
+    }
+
+
+}

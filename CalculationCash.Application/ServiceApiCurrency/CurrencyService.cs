@@ -28,7 +28,7 @@ namespace CalculationCash.Application.ServiceApiCurrency
                 {
                     CreateDate = DateTime.Now,
                     Deleted = false,
-                    Id = new Guid(),
+                    Id = Guid.NewGuid(),
                     CurrencyName = obj.currency,
                     Code = obj.code,
                     EffectiveDate = DateTime.Parse((obj.rates[0].effectiveDate).ToString()),
@@ -72,6 +72,9 @@ namespace CalculationCash.Application.ServiceApiCurrency
 
             CurrencyDto dto = new CurrencyDto()
             {
+                CreateDate = DateTime.Now,
+                Deleted = false,
+                Id = Guid.NewGuid(),
                 CurrencyName = obj.currency,
                 Code = obj.code,
                 EffectiveDate = DateTime.Parse((obj.rates[0].effectiveDate).ToString()),
