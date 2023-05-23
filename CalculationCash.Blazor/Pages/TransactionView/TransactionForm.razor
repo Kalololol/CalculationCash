@@ -1,46 +1,60 @@
-﻿
+﻿@page "/Transakcje"
+
 
 <h3>Transakcje</h3>
 
+
 @if (transactions.Count > 0)
 {
-
+    
     <table class="table">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Nazwa</th>
+                <th>Data transakcji</th>
+                <th>Prowizja</th>
+                <th>Komisja</th>
+                <th>Swap</th>
+                <th>Profit</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var wiersz in wiersze)
+            @foreach (var t in transactions)
             {
                 <tr>
-                    <td>@wiersz.Id</td>
-                    <td>@wiersz.Nazwa</td>
+                    <td>@t.TimeTransaction.ToString("yyyy-MM-dd")</td>
+                    <td>@t.Provision</td>
+                    <td>@t.Commision</td>
+                    <td>@t.Swap</td>
+                    <td>@t.Profit</td>
+                    <button @onclick="RemoveTransaction">Usuń</button>
+
                 </tr>
             }
         </tbody>
+        <th>Suma: @TransactionsSum </th>
+        <button @onclick="ClearForm">Usuń wszystko</button>
+
     </table>
+    <button @onclick="ConvertForm">Przelicz</button>
 
 }
 else
 {
-    
+    <p> Pusty Formularz </p>
 }
 
-<h4>New Transaction:</h4>
+<h4>Nowa transakcja:</h4>
 <div>
     <label for="date">Data transakcji:</label>
-    <input id="date" type="date" @bind="@newTransaction.Date" />
+    <input id="date" type="date" @bind="@newTransaction.TimeTransaction" />
 </div>
 <div>
     <label for="commission">Prowizja:</label>
-    <input id="commission" type="number" step="0.01" @bind="@newTransaction.Commission" />
+    <input id="commission" type="number" step="0.01" @bind="@newTransaction.Provision" />
 </div>
 <div>
     <label for="fee">Komisja:</label>
-    <input id="fee" type="number" step="0.01" @bind="@newTransaction.Fee" />
+    <input id="fee" type="number" step="0.01" @bind="@newTransaction.Commision" />
 </div>
 <div>
     <label for="swap">Swap:</label>
@@ -52,28 +66,41 @@ else
 </div>
 
 <button @onclick="AddTransaction">Dodaj</button>
-<button @onclick="RemoveLastTransaction">Usuń</button>
-<button @onclick="ClearForm">Usuń wszystko</button>
 
 
 @code {
     private List<TransactionBlazor> transactions = new List<TransactionBlazor>();
     private TransactionBlazor newTransaction = new TransactionBlazor();
+    private decimal TransactionsSum = 0;
+    private List<int> counter;
+    int count = 0;
+
+
 
     private void AddTransaction()
     {
         transactions.Add(newTransaction);
         newTransaction = new TransactionBlazor();
+        count++;
     }
-
+    private void RemoveTransaction()
+    {
+        if (transactions.Count > 0) transactions.RemoveAt(transactions.Count - 1);
+        count--;
+    }
     private void RemoveLastTransaction()
     {
         if (transactions.Count > 0) transactions.RemoveAt(transactions.Count - 1);
+        count--;
     }
     private void ClearForm()
     {
         transactions.Clear();
         newTransaction = new TransactionBlazor();
+    }
+    private void ConvertForm()
+    {
+        //implementacja kodu do konwersji raportu
     }
 
 
