@@ -1,4 +1,5 @@
 ﻿@page "/Transakcje"
+@inject NavigationManager NavigationManager
 
 
 <h3>Transakcje</h3>
@@ -46,7 +47,7 @@ else
 <h4>Nowa transakcja:</h4>
 <div>
     <label for="date">Data transakcji:</label>
-    <input id="date" type="date" @bind="@newTransaction.TimeTransaction" />
+    <input id="date" type="date" @bind="@transactionDate" min="2021-01-01" max=@maxDate />
 </div>
 <div>
     <label for="commission">Prowizja:</label>
@@ -74,14 +75,28 @@ else
     private decimal TransactionsSum = 0;
     private List<int> counter;
     int count = 0;
+    private string maxDate = DateTime.Now.ToString("yyyy-MM-dd");
+    private DateTime transactionDate = DateTime.Now;
 
 
-
-    private void AddTransaction()
+    private async Task AddTransaction()
     {
-        transactions.Add(newTransaction);
-        newTransaction = new TransactionBlazor();
-        count++;
+        if (newTransaction.Commision != null)
+        {
+            newTransaction.TimeTransaction = transactionDate;
+            transactions.Add(newTransaction);
+            newTransaction = new TransactionBlazor();
+            count++;
+        }
+        else
+        {
+            ShowDialog();
+        }
+    }
+    private async Task ShowDialog()
+    {
+        //await DialogService.ShowMessageBox("Tytuł", "Treść wiadomości");   
+        
     }
     private void RemoveTransaction()
     {
