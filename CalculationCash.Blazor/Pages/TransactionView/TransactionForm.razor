@@ -5,45 +5,6 @@
 <h3>Transakcje</h3>
 
 
-@if (transactions.Count > 0)
-{
-    
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Data transakcji</th>
-                <th>Prowizja</th>
-                <th>Komisja</th>
-                <th>Swap</th>
-                <th>Profit</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var t in transactions)
-            {
-                <tr>
-                    <td>@t.TimeTransaction.ToString("yyyy-MM-dd")</td>
-                    <td>@t.Provision</td>
-                    <td>@t.Commision</td>
-                    <td>@t.Swap</td>
-                    <td>@t.Profit</td>
-                    <button @onclick="RemoveTransaction">Usuń</button>
-
-                </tr>
-            }
-        </tbody>
-        <th>Suma: @TransactionsSum </th>
-        <button @onclick="ClearForm">Usuń wszystko</button>
-
-    </table>
-    <button @onclick="ConvertForm">Przelicz</button>
-
-}
-else
-{
-    <p> Pusty Formularz </p>
-}
-
 <h4>Nowa transakcja:</h4>
 <div>
     <label for="date">Data transakcji:</label>
@@ -69,6 +30,52 @@ else
 <button @onclick="AddTransaction">Dodaj</button>
 
 
+@if (transactions.Count > 0)
+{
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Data transakcji</th>
+                <th>Prowizja</th>
+                <th>Komisja</th>
+                <th>Swap</th>
+                <th>Profit</th>
+                <th>Razem</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+
+            @foreach (var t in transactions)
+            {
+                <tr>
+                    <td>@t.TimeTransaction.ToString("yyyy-MM-dd")</td>
+                    <td>@t.Provision</td>
+                    <td>@t.Commision</td>
+                    <td>@t.Swap</td>
+                    <td>@t.Profit</td>
+                    <td>@t.ResultSum</td>
+                    <button @onclick="(e) => RemoveTransaction(t.Id)">Usuń</button>
+
+                </tr>
+                }
+        </tbody>
+        <th>Suma: @TransactionsSum </th>
+        
+        <button @onclick="ClearForm">Usuń wszystko</button>
+
+    </table>
+    <button @onclick="ConvertForm">Przelicz</button>
+
+}
+else
+{
+    <p> Pusty Formularz </p>
+}
+
+
+
 @code {
     private List<TransactionBlazor> transactions = new List<TransactionBlazor>();
     private TransactionBlazor newTransaction = new TransactionBlazor();
@@ -77,6 +84,7 @@ else
     int count = 0;
     private string maxDate = DateTime.Now.ToString("yyyy-MM-dd");
     private DateTime transactionDate = DateTime.Now;
+    int numberTransaction = 0;
 
 
     private async Task AddTransaction()
@@ -84,9 +92,12 @@ else
         if (newTransaction.Commision != null)
         {
             newTransaction.TimeTransaction = transactionDate;
+            newTransaction.Id = Guid.NewGuid();
+            TransactionsSum += newTransaction.Commision + newTransaction.Swap + newTransaction.Profit + newTransaction.Provision;
             transactions.Add(newTransaction);
             newTransaction = new TransactionBlazor();
             count++;
+
         }
         else
         {
@@ -96,18 +107,17 @@ else
     private async Task ShowDialog()
     {
         //await DialogService.ShowMessageBox("Tytuł", "Treść wiadomości");   
-        
+
     }
-    private void RemoveTransaction()
+    private void RemoveTransaction(Guid id)
     {
-        if (transactions.Count > 0) transactions.RemoveAt(transactions.Count - 1);
-        count--;
+        var trans = transactions.Find(x => x.Id == id);
+        TransactionsSum = trans.Commision - trans.Swap - trans.Profit - trans.Provision;
+
+        int num = transactions.IndexOf(trans);
+        transactions.RemoveAt(num);
     }
-    private void RemoveLastTransaction()
-    {
-        if (transactions.Count > 0) transactions.RemoveAt(transactions.Count - 1);
-        count--;
-    }
+
     private void ClearForm()
     {
         transactions.Clear();
@@ -117,6 +127,13 @@ else
     {
         //implementacja kodu do konwersji raportu
     }
+    //private void SumTransactions()
+    //{
+    //    foreach(var t in transactions)
+    //    {
+    //        TransactionsSum += t.Commision + t.Swap + t.Profit + t.Provision;
+    //    }
+    //}
 
 
 }
